@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensajes 💌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 100, 150, 0.3);
+      width: 300px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    #popup p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    #popup button {
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #popup button:hover {
+      background: #ff6b81;
+    }
+
+    #startBtn {
+      background: #ff4d6d;
+      color: white;
+      font-size: 18px;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #startBtn:hover {
+      background: #ff6b81;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startBtn">💌 Mostrar mensajes</button>
+
+  <div id="popup">
+    <p id="mensaje"></p>
+    <button id="okBtn">OK</button>
+  </div>
+
+  <script>
+    const mensajes = [
+      "Te dedico",
+      "La de Mia",
+      "Tú eres MÍA",
+      "¿ignorante?",
+      "YO TE SUEÑO",
+      "Cuando voy ",
+      "A dormir",
+      "Pero",
+      "TÚ me piensas",
+      "Antes",
+      "De costarte",
+      "Quizás",
+      "Nos encontramos",
+      "Más alante",
+      "Hablamos el martes",
+      "Mientras trato",
+      "De no llamarte",
+      "Y eso es",
+      "Un arte",
+    
+    ];
+
+    const popup = document.getElementById('popup');
+    const mensaje = document.getElementById('mensaje');
+    const okBtn = document.getElementById('okBtn');
+    const startBtn = document.getElementById('startBtn');
+    let index = 0;
+
+    startBtn.addEventListener('click', () => {
+      startBtn.style.display = 'none';
+      popup.style.display = 'block';
+      mensaje.textContent = mensajes[index];
+    });
+
+    okBtn.addEventListener('click', () => {
+      index++;
+      if (index < mensajes.length) {
+        mensaje.textContent = mensajes[index];
+      } else {
+        popup.style.display = 'none';
+        alert("💖 Fin de los mensajes 💖");
+      }
+    });
+  </script>
+
+</body>
+</html>
